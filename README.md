@@ -26,4 +26,4 @@
 >####12 建模工具：IBM.Rational
 
 #详细说明：
->详细说明见我博客：[云南特色商城]（）
+>详细说明见我博客：[云南特色商城](http://blog.csdn.net/zhangzqit/article/details/49749565)
