@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="yunnanshop"
+  id="myeclipse.1447118679532"
+  context-root="/yunnanshop"
+  j2ee-spec="5.0"
+  archive="yunnanshop.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
