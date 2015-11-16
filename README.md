@@ -12,18 +12,18 @@
 >####08 基于用户的商品推荐
 
 #所用技术：
->####01 显示层：Struts2
->####02 分层解耦：Spring
->####03 持久层：Hibernate
+>####01 显示层：Struts2.3
+>####02 分层解耦：Spring3.2
+>####03 持久层：Hibernate3.6
 >####04 基于用户的商品推荐：Mahout
->####05 数据库：MySQL
+>####05 数据库：MySQL5.5
 >####06 JDK：1.6
->####07 单元测试：Junit
+>####07 单元测试：Junit4.0
 >####08 版本管理：Git
->####09 Web容器：Tomcat
+>####09 Web容器：Tomcat6.0
 >####10 操作系统：Windows7
 >####11 开发工具：MyEclipse8.5
->####12 建模工具：IBM.Rational
+>####12 建模工具：IBM.Rational7.0
 
 #详细说明：
 >详细说明见我博客：[云南特色商城](http://blog.csdn.net/zhangzqit/article/details/49749565)
