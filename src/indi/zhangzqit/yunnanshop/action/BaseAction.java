@@ -27,6 +27,10 @@ import indi.zhangzqit.yunnanshop.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+/**
+ *BaseAction用来编写所有的子Action公共代码,包括 model ServletConfigInterceptor: 此拦截器用来注入相应的
+ * jsp内置对象,和相应的map。
+ */
 public class BaseAction<T> extends ActionSupport implements RequestAware,
 		SessionAware, ApplicationAware, ModelDriven<T> {
 
@@ -41,6 +45,7 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,
 	}
 
 	@Resource
+	// 默认名称为当前变量名称
 	protected AccountService accountService;
 	@Resource
 	protected ProductService productService;
@@ -65,6 +70,7 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,
 	@Resource
 	protected SendUtil sendUtil;
 
+	// 在调用构造方法的时候给model赋值
 	protected T model;
 
 	protected List<T> jsonList = null;
@@ -107,6 +113,7 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,
 	}
 
 	@Override
+	// 返回的对象将要压栈
 	public T getModel() {
 		return model;
 	}

@@ -44,6 +44,7 @@ public class Lowest10Recommender {
 
 				FileStatus[] files = fs.listStatus(cachePath);
 				for (FileStatus f : files) {
+					// If that is a temp file, ignore it.
 					if (new File(f.getPath().toString()).getName().startsWith(
 							"_"))
 						continue;
@@ -117,6 +118,7 @@ public class Lowest10Recommender {
 				throws IOException {
 
 			TreeMap<Double, String> repToRecordMap = new TreeMap<Double, String>();
+			// Input: UserId, List<QuestionId, score>
 
 			while (values.hasNext()) {
 
@@ -138,6 +140,7 @@ public class Lowest10Recommender {
 			recQ = recQ.substring(0, recQ.lastIndexOf(","));
 
 			output.collect(key, new Text(recQ));
+			// Output: UserId, Top 10 comma separated Question IDs
 
 		}
 	}

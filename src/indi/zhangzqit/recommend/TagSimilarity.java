@@ -50,6 +50,8 @@ public class TagSimilarity {
 
 			valueHolder.set(key.toString() + "," + value.toString());
 
+			// If its source, that is user
+
 			if (keyStr[0].equals("U")) {
 				for (int i = 0; i < bucketCount; ++i) {
 					keyHolder.set((hash * bucketCount + i) * 10);
@@ -115,6 +117,9 @@ public class TagSimilarity {
 						idTagsSplit = userStr.split(",");
 						userId = idTagsSplit[0];
 
+						// If distance is 1.0, they are farthest and have
+						// nothing in common.
+
 						if (sim != 1.0) {
 							valueHolder.set(userId + "," + questionId + ","
 									+ sim);
@@ -177,6 +182,7 @@ public class TagSimilarity {
 		}
 
 		public int compare(WritableComparable w1, WritableComparable w2) {
+			// consider only the base part of the key
 			Long t1 = ((LongWritable) w1).get() / KEY_EXTENSION_SCALE;
 			Long t2 = ((LongWritable) w2).get() / KEY_EXTENSION_SCALE;
 
@@ -184,5 +190,4 @@ public class TagSimilarity {
 			return comp;
 		}
 	}
-
 }

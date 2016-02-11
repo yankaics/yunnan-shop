@@ -287,6 +287,7 @@ public class SODriver extends Configured implements Tool {
 
 	public int run(String[] args) throws Exception {
 
+		// 1. Pre-process the data.
 		startTimer();
 		preprocessData(args);
 		stopTimer();
@@ -316,12 +317,17 @@ public class SODriver extends Configured implements Tool {
 				+ "seconds");
 		printline();
 
+		// 2. Matrix multiplication of Questions Co-occurence matrix and User
+		// Preference matrix
+
 		startTimer();
 		matrixMultiplicationPairs(args);
 		stopTimer();
 		printline();
 		System.out.println("Total time for matrix product: "
 				+ getJobTimeInSecs() + "seconds");
+
+		// 3. Recommend top questions
 
 		startTimer();
 		top10questions(args);

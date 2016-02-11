@@ -52,6 +52,7 @@ public class ProductAction extends BaseAction<Product> {
 
 	public String queryJoinCategory() {
 		System.out.println(model.getName() + "," + page + "," + rows);
+		// root÷–≈‰÷√ pageModel
 		pageModel = new PageModel<Product>();
 		pageModel.setTotal(productService.count(model.getName()));
 		pageModel.setRows(productService.queryJoinCategory(model.getName(),

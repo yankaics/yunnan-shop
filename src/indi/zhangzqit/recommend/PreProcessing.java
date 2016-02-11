@@ -33,7 +33,7 @@ public class PreProcessing {
 		public void map(LongWritable key, Text value,
 				OutputCollector<Text, Text> output, Reporter reporter)
 				throws IOException {
-
+			// Parse the input string into a nice map
 			Map<String, String> parsed = Utils.transformXmlToMap(value
 					.toString());
 
@@ -53,6 +53,7 @@ public class PreProcessing {
 					output.collect(new Text(ownerUserId), new Text(parentId));
 				}
 			}
+			// Output: A,UserId,QuestionId
 
 		}
 
@@ -88,9 +89,10 @@ public class PreProcessing {
 		public void map(Text key, Text value,
 				OutputCollector<Text, IntWritable> output, Reporter reporter)
 				throws IOException {
-
+			// Input: qid1,qid2 1
 			output.collect(key, new IntWritable(Integer.parseInt(value
 					.toString())));
+			// Output: qid1,qid2 1
 		}
 
 	}
@@ -134,6 +136,7 @@ public class PreProcessing {
 
 				}
 			}
+			// Output: QuestionId, Tags Separated by Comma
 		}
 
 	}
@@ -195,6 +198,7 @@ public class PreProcessing {
 						}
 					}
 				}
+				// Utils.printHashMap(questionUser);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("SWERR: File error.");
@@ -205,6 +209,7 @@ public class PreProcessing {
 				OutputCollector<Text, Text> output, Reporter reporter)
 				throws IOException {
 
+			// System.out.println("Key: " + key.toString());
 			HashSet<String> userHs = questionUser.get(key.toString());
 			if (userHs != null) {
 				while (values.hasNext()) {
@@ -220,6 +225,7 @@ public class PreProcessing {
 				System.out
 						.println("SWERR: QuestionID not found in Hash which is not possible.");
 			}
+			// Output: UserID, Tag
 		}
 	}
 }

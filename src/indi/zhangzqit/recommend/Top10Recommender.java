@@ -43,6 +43,7 @@ public class Top10Recommender {
 
 				FileStatus[] files = fs.listStatus(cachePath);
 				for (FileStatus f : files) {
+					// If that is a temp file, ignore it.
 					if (new File(f.getPath().toString()).getName().startsWith(
 							"_"))
 						continue;
@@ -110,6 +111,8 @@ public class Top10Recommender {
 
 			TreeMap<Integer, String> repToRecordMap = new TreeMap<Integer, String>();
 
+			// Input: UserId, List<QuestionId, score>
+
 			while (values.hasNext()) {
 
 				String value = values.next().toString();
@@ -130,6 +133,8 @@ public class Top10Recommender {
 			recQ = recQ.substring(0, recQ.lastIndexOf(","));
 
 			output.collect(key, new Text(recQ));
+
+			// Output: UserId, Top 10 comma separated Question IDs
 		}
 	}
 }

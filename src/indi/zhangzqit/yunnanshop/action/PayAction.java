@@ -18,9 +18,11 @@ public class PayAction extends BaseAction<Object> implements ParameterAware {
 		this.parameters = parameters;
 	}
 
+	// 重写getModel方法,根据请求的参数动态创建对象
 	@Override
 	public Object getModel() {
 		if (parameters.get("pd_FrpId") != null) {
+			// 此请求是发送到银行的请求,应该创建sendData
 			model = new SendData();
 		} else {
 			model = new BackData();
@@ -44,8 +46,10 @@ public class PayAction extends BaseAction<Object> implements ParameterAware {
 		BackData backData = (BackData) model;
 		boolean isOk = payService.checkBackData(backData);
 		if (isOk && backData.getR1_Code().equals("1")) {
+			// 仅仅修改订单状态,其它字段不用更新
 			forderService.updateStatus(
 					Integer.parseInt(backData.getR6_Order()), 2);
+			// 获取返回的扩展信息
 			String r8_MP = backData.getR8_MP();
 			sendUtil.sendEmail(backData.getR6_Order(), backData.getR3_Amt(),
 					"soft03_test@sina.com");

@@ -9,6 +9,7 @@ import indi.zhangzqit.yunnanshop.model.Role;
 
 public class RoleAction extends BaseAction<Role> {
 
+	// 查询所有的角色信息集合,返回 json格式
 	public String query() {
 		pageModel = new PageModel<Role>();
 		pageModel.setRows(roleService.query(model.getName(), page, rows));
@@ -33,6 +34,7 @@ public class RoleAction extends BaseAction<Role> {
 				privilegeSet.add(new Privilege(Integer.parseInt(temp)));
 			}
 		}
+		// 把新的权限集合存储到角色对象中 student.setGrade(new Grade(1));
 		model.setPrivilegeSet(privilegeSet);
 		roleService.update(model);
 		System.out.println("**************");

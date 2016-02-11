@@ -6,6 +6,7 @@ import indi.zhangzqit.yunnanshop.model.User;
 
 public class ForderAction extends BaseAction<Forder> {
 
+	// 实现购物车与购物项的级联入库
 	public String save() {
 		Forder forder = (Forder) session.get("forder");
 

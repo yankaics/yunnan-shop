@@ -30,6 +30,7 @@ public class CategoryAction extends BaseAction<Category> {
 
 	public String queryJoinAccount() {
 		System.out.println(model.getType() + "," + page + "," + rows);
+		// root÷–≈‰÷√ pageModel
 		pageModel = new PageModel<Category>();
 		pageModel.setTotal(categoryService.count(model.getType()));
 		pageModel.setRows(categoryService.queryJoinAccount(model.getType(),

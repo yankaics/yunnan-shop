@@ -28,6 +28,7 @@ public class SorderAction extends BaseAction<Sorder> {
 	public String addSorder() {
 		Product product = productService.get(model.getProduct().getId());
 		Forder forder = (Forder) session.get("forder");
+		// 添加购物项到购物车中,且判断重复
 		forder = sorderService.addSorder(forder, product);
 		forder.setTotal(forderService.cluTotal(forder));
 		return "showCar";
@@ -35,9 +36,13 @@ public class SorderAction extends BaseAction<Sorder> {
 
 	public String alterSorder() {
 		System.out.println(model + "," + model.getProduct());
+		// 从session中获取购物车
 		Forder forder = (Forder) session.get("forder");
+		// 根据商品编号更新商品数量
 		forder = sorderService.alterSorder(forder, model);
+		// 计算新的总价格
 		forder.setTotal(forderService.cluTotal(forder));
+		// 通过流的方式返回新的总价格
 		inputStream = new ByteArrayInputStream(forder.getTotal().toString()
 				.getBytes());
 		return "stream";

@@ -45,6 +45,7 @@ public class MatrixMultiplication {
 
 				FileStatus[] files = fs.listStatus(cachePath);
 				for (FileStatus f : files) {
+					// If that is a temp file, ignore it.
 					if (new File(f.getPath().toString()).getName().startsWith(
 							"_"))
 						continue;
@@ -83,6 +84,8 @@ public class MatrixMultiplication {
 
 					}
 				}
+				// Utils.printHashMap(questionUser);
+
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("SWERR: File error.");

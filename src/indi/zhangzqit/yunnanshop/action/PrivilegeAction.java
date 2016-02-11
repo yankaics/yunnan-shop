@@ -20,9 +20,11 @@ public class PrivilegeAction extends BaseAction<Privilege> {
 		role = roleService.getJoinPrvilege(role.getId());
 		System.out.println(role.getPrivilegeSet().size());
 		jsonList = privilegeService.queryForTree();
+		// 实现权限信息的回显
 		for (Privilege myPrivilege : role.getPrivilegeSet()) {
 			for (Privilege parent : jsonList) {
 				boolean isOk = false;
+				// 获取当前父菜单的子菜单, 只需要与tree的子菜单比较即可
 				for (Privilege children : parent.getChildren()) {
 					if (myPrivilege.getId().equals(children.getId())) {
 						children.setChecked(true);

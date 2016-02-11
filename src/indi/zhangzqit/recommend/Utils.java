@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Utils {
 
+	// This helper function parses the stackoverflow into a Map for us.
 	public static Map<String, String> transformXmlToMap(String xml) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
@@ -25,6 +26,8 @@ public class Utils {
 		return map;
 	}
 
+	// This helper function cleans tags and gives a string separated list of
+	// tags.
 	public static String cleanTags(String tags) {
 
 		String cleaned = tags.replace("&gt;&lt;", ",");
@@ -33,6 +36,7 @@ public class Utils {
 		return cleaned;
 	}
 
+	// Helper to print a hashmap
 	public static void printHashMap(HashMap<String, HashSet<String>> hm) {
 
 		for (Map.Entry entry : hm.entrySet()) {
@@ -42,7 +46,5 @@ public class Utils {
 				System.out.println("value: " + value);
 			}
 		}
-
 	}
-
 }
