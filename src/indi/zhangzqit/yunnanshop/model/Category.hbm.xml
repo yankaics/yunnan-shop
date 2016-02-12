@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.it.shop.model">
+	<class name="Category" table="category">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="native"></generator>
+		</id>
+		<property name="type" type="java.lang.String">
+			<column name="type" length="20" />
+		</property>
+		<property name="hot" type="java.lang.Boolean">
+			<column name="hot" />
+		</property>
+		<!-- lazy="false" fetch="join" -->
+		<many-to-one name="account" class="Account">
+			<column name="aid" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

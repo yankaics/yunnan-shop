@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.it.shop.model">
+	<class name="Role" table="role" catalog="shop">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="native"></generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="name" length="20" />
+		</property>
+		<property name="detail" type="java.lang.String">
+			<column name="detail" length="200" />
+		</property>
+		<set name="privilegeSet" table="privilege_role">
+			<key>
+				<column name="rid" />
+			</key>
+			<many-to-many class="Privilege">
+				<column name="pid" />
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

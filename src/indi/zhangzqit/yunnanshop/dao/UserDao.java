@@ -1,5 +1,8 @@
 package indi.zhangzqit.yunnanshop.dao;
 
-public class UserDao {
+import indi.zhangzqit.yunnanshop.model.User;
 
+public interface UserDao extends BaseDao<User> {
+
+	public User login(User user);
 }
