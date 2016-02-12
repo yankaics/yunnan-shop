@@ -1,5 +1,8 @@
 package indi.zhangzqit.yunnanshop.service;
 
-public class UrlService {
+import indi.zhangzqit.yunnanshop.model.Url;
 
+public interface UrlService extends BaseService<Url> {
+
+	public void getAllRoles();
 }
